@@ -69,9 +69,8 @@ public class ProjectMain {
 				case 'e':
 				case 'E':
 				{
-					System.out.println("Created new file");
-					String fileName = scanner.nextLine();
-					fileName = fileName + ".txt";
+					System.out.println("Please create a new file name");
+					String fileName = scanner.next();
 					sfile.addNewFile(fileName);
 					break;
 

@@ -84,15 +84,19 @@ public class SortFileName {
 	}
 
 	// Option (N) - Add new file to existing directory list
-	public void addNewFile(String newFile) throws IOException {
-		File file = new File(newFile);
-		if(file.exists()) {
-			System.out.println("File already exists");
+	public void addNewFile(String newFile) {
+		//File dirName = new File(dirPath);
+        try {
+		File file = new File (newFile);
+		if(file.createNewFile()) {
+			System.out.println("New file added: " + file.getName());
 		} else {
-			System.out.println("No such file exists, creating now...");
-			file.createNewFile();
-			
+			System.out.println("File already exists");
 		}
+		} catch (Exception e) {
+			System.out.println("Error while adding file " + e.toString());
+		}
+		
 
 	}
 
