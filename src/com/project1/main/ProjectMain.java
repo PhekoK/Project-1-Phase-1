@@ -73,15 +73,14 @@ public class ProjectMain {
 				{
 					System.out.println("Name of file you want to create");
 					String txtFile = scanner.next();
-					File f1 = new File("/"+txtFile);
+					
 					Path p1 = Paths.get(dirPath);
+					
+					File f1 = new File(p1+"/"+txtFile);
+					
 					File f2 = new File(p1.toString());
 					try {
-						if(!f2.exists()) {
-							f2.mkdir();
-						} else {
-							f1.createNewFile();
-						}
+						f1.createNewFile();
 						
 					} catch (Exception e) {
 						System.out.println("Error creating a new file" + e.toString());

@@ -46,6 +46,8 @@ public class SortFileName {
 	}
 	
 	//Option (D) - delete file from existing directory
-	
+	public void deleteFile() {
+		
+	}
 
 }
