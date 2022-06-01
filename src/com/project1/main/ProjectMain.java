@@ -2,6 +2,8 @@ package com.project1.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 import com.project1.developerdetails.DeveloperDetails;
@@ -69,9 +71,23 @@ public class ProjectMain {
 				case 'e':
 				case 'E':
 				{
-					System.out.println("Please create a new file name");
-					String fileName = scanner.next();
-					sfile.addNewFile(fileName);
+					System.out.println("Name of file you want to create");
+					String txtFile = scanner.next();
+					File f1 = new File("/"+txtFile);
+					Path p1 = Paths.get(dirPath);
+					File f2 = new File(p1.toString());
+					try {
+						if(!f2.exists()) {
+							f2.mkdir();
+						} else {
+							f1.createNewFile();
+						}
+						
+					} catch (Exception e) {
+						System.out.println("Error creating a new file" + e.toString());
+					}
+					
+					
 					break;
 
 				}
