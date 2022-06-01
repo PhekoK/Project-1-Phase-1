@@ -1,6 +1,7 @@
 package com.project1.sortfile;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,9 +13,7 @@ import javax.swing.JOptionPane;
 
 public class SortFileName {
 
-	String dirPath = null;
-	Scanner sc = new Scanner(System.in);
-
+	/**
 	public void enterFilePath() {
 
 		System.out.println("\nPlease enter a file path below: ");
@@ -31,7 +30,7 @@ public class SortFileName {
 		}
 
 		sc.close();
-	}
+	} */
 
 	// Option (A) - Sort files in ascending order
 	public File[] sortDirFiles(String dirPath) {
@@ -46,8 +45,20 @@ public class SortFileName {
 	}
 	
 	//Option (D) - delete file from existing directory
-	public void deleteFile() {
+	public void deleteFile(String fileToBeDeleted) {
 		
+		try {
+			File f = new File(fileToBeDeleted);
+			if(f.delete()) {
+				System.out.println(f.getName() + " is deleted");
+			} else {
+				System.out.println("Failed");
+				throw new FileNotFoundException();
+				//System.out.println("Failed To delete file");
+			}
+		} catch (Exception e) {
+			System.out.println("" + e.toString());
+		}
 	}
 
 }

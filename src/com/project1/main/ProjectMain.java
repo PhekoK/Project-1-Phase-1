@@ -100,7 +100,11 @@ public class ProjectMain {
 				case 'd':
 				case 'D':
 				{
+					System.out.println("Which file would you like to delete? ");
+					String dFile = scanner.next();
+					Path p1 = Paths.get(dirPath);
 
+					sfile.deleteFile(p1+"/"+dFile);
 					break;
 
 				}
