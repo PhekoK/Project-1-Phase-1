@@ -56,11 +56,8 @@ public class ProjectMain {
 			case 'b':
 			case 'B':
 			{
-				
 				boolean boolSecondMenu =true;
 				
-				
-
 				System.out.println("Choose (E) for entering a new file"+ "\n"+
 						"Choose (S) to search a new file" + "\n"+
 						"Choose (D) to delete a file" + "\n"+
@@ -86,14 +83,15 @@ public class ProjectMain {
 						System.out.println("Error creating a new file" + e.toString());
 					}
 					
-					
 					break;
 
 				}
 				case 's':
 				case 'S':
 				{
-
+					System.out.println("Enter name of file you want to search...");
+					String name = scanner.next();
+					sfile.findFile(name, new File(dirPath));
 					break;
 
 				}
@@ -111,29 +109,32 @@ public class ProjectMain {
 				case 'm':
 				case 'M':
 				{
-					
-
+					System.out.println("\nBack to main menu option ...");
 					break;
 				}
+					
+				default:
+					System.out.println("Wrong input. Try again");
 
 				}
 				break;
-				
-			
 
 			}
 
 			case 'x':
 			case 'X':
 			{
-				System.out.println("Bye");
+				JOptionPane.showMessageDialog(null, "Bye :)");
+				System.out.println("Program terminated");
 				boolContinue = false;
 				break;
 			}
+			
+			default:
+				System.out.println("Invalid option. Try again");
 			}
 
 		}while(boolContinue);
-		//sfile.userOptions();
 		
 	}
 

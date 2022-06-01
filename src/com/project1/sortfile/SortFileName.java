@@ -13,25 +13,6 @@ import javax.swing.JOptionPane;
 
 public class SortFileName {
 
-	/**
-	public void enterFilePath() {
-
-		System.out.println("\nPlease enter a file path below: ");
-		Scanner sc = new Scanner(System.in);
-
-		dirPath = sc.nextLine(); // use nextLine() instead of next()
-		if (!dirPath.isEmpty()) {
-			System.out.println("You entered file path: " + dirPath);
-
-		} else if (dirPath.isEmpty()) {
-			System.out.println("You have not entered a directory path. Why?");
-		} else {
-			throw new IllegalArgumentException();
-		}
-
-		sc.close();
-	} */
-
 	// Option (A) - Sort files in ascending order
 	public File[] sortDirFiles(String dirPath) {
 		File fileDir = new File(dirPath);
@@ -58,6 +39,22 @@ public class SortFileName {
 			}
 		} catch (Exception e) {
 			System.out.println("" + e.toString());
+		}
+	}
+	
+	//Option (D) - Search for user specified file from directory
+	public void findFile(String fileName, File file) {
+		File[] list = file.listFiles();
+		if(list!=null) {
+			for(File fils: list) {
+				if(fils.isDirectory()) {
+					findFile(fileName, fils);
+				} else if(fileName.equalsIgnoreCase(fils.getName())) {
+					System.out.println(fileName+ " was found in "+fils.getParentFile());
+				} 
+			}
+		}else {
+			System.out.println("FNF! File Not Found");
 		}
 	}
 
